@@ -10,7 +10,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || "http://localhost:5173" }));
+const allowedOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:5173")
+  .split(",")
+  .map((origin) => origin.trim());
+
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 
 app.get("/api/health", (_req, res) => res.json({ ok: true }));
