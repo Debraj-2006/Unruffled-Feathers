@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Reveal from "./Reveal.jsx";
-import { SITE_EMAIL, WHATSAPP_NUMBER } from "../config.js";
+import { API_URL, SITE_EMAIL, WHATSAPP_NUMBER } from "../config.js";
 
 const EMPTY = { name: "", email: "", phone: "", subject: "", message: "" };
 
@@ -34,7 +34,7 @@ export default function Contact() {
 
     setStatus({ state: "loading", message: "" });
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),

@@ -6,3 +6,8 @@ export const WHATSAPP_DEFAULT_MESSAGE =
 
 export const SITE_EMAIL = "hello@unruffledfeathers.com";
 export const SITE_URL = "https://www.unruffledfeathers.com";
+
+// Base URL of the backend API. Leave blank for local dev (Vite proxies /api
+// to the local Express server) — set VITE_API_URL in Vercel to the deployed
+// Render backend's URL, e.g. "https://unruffled-feathers-api.onrender.com".
+export const API_URL = import.meta.env.VITE_API_URL || "";
