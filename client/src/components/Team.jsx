@@ -22,23 +22,34 @@ const TEAM = [
   },
 ];
 
-function TeamCard({ member, delay }) {
+function TeamRow({ member, index }) {
   const [expanded, setExpanded] = useState(false);
+  const reversed = index % 2 === 1;
 
   return (
-    <Reveal delay={delay} variant="zoom" className={`team-card ${expanded ? "expanded" : ""}`}>
-      <div className="team-photo">
-        <img src={member.photo} alt={member.name} />
-      </div>
-      <div className="team-info">
+    <div className={`team-row ${reversed ? "team-row-reverse" : ""}`}>
+      <Reveal variant={reversed ? "right" : "left"} className="team-row-photo">
+        <div className="team-photo">
+          <div className="team-photo-frame">
+            <img src={member.photo} alt={member.name} />
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal
+        variant={reversed ? "left" : "right"}
+        delay={120}
+        className="team-row-info"
+        data-index={String(index + 1).padStart(2, "0")}
+      >
         <h3>{member.name}</h3>
         <span className="team-role">{member.role}</span>
-        <p className="team-bio">{member.bio}</p>
+        <p className={`team-bio ${expanded ? "expanded" : ""}`}>{member.bio}</p>
         <button className="team-more" onClick={() => setExpanded((v) => !v)}>
           {expanded ? "Read less" : "Read more"}
         </button>
-      </div>
-    </Reveal>
+      </Reveal>
+    </div>
   );
 }
 
@@ -58,9 +69,9 @@ export default function Team() {
           </p>
         </Reveal>
 
-        <div className="team-grid">
+        <div className="team-rows">
           {TEAM.map((member, i) => (
-            <TeamCard key={member.name} member={member} delay={i * 120} />
+            <TeamRow key={member.name} member={member} index={i} />
           ))}
         </div>
       </div>

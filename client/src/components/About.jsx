@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import Reveal from "./Reveal.jsx";
 
 const FOCUS_AREAS = [
@@ -10,43 +9,12 @@ const FOCUS_AREAS = [
 ];
 
 export default function About() {
-  const visualRef = useRef(null);
-  const tiltRef = useRef(null);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const node = visualRef.current;
-    const tilt = tiltRef.current;
-    if (!node || !tilt) return;
-
-    const onMove = (e) => {
-      const rect = node.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;
-      const py = (e.clientY - rect.top) / rect.height;
-      const rx = (0.5 - py) * 16;
-      const ry = (px - 0.5) * 18;
-      tilt.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-    };
-
-    const onLeave = () => {
-      tilt.style.transform = "rotateX(0deg) rotateY(0deg)";
-    };
-
-    node.addEventListener("mousemove", onMove);
-    node.addEventListener("mouseleave", onLeave);
-    return () => {
-      node.removeEventListener("mousemove", onMove);
-      node.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
-
   return (
     <section id="about" className="section section-alt">
       <div className="container about-grid">
-        <div className="about-visual" ref={visualRef}>
+        <div className="about-visual">
           <Reveal variant="left" className="about-frame">
-            <div className="about-tilt" ref={tiltRef}>
+            <div className="about-tilt">
               <div className="about-logo-card">
                 <img src="/assets/logo.jpeg" alt="Unruffled Feathers" />
               </div>

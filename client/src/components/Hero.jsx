@@ -15,7 +15,6 @@ export default function Hero() {
   const copyRef = useRef(null);
   const visualRef = useRef(null);
   const glowRef = useRef(null);
-  const tiltRef = useRef(null);
   const feathersRef = useRef(null);
 
   useEffect(() => {
@@ -46,34 +45,6 @@ export default function Hero() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const node = visualRef.current;
-    const tilt = tiltRef.current;
-    if (!node || !tilt) return;
-
-    const onMove = (e) => {
-      const rect = node.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;
-      const py = (e.clientY - rect.top) / rect.height;
-      const rx = (0.5 - py) * 22;
-      const ry = (px - 0.5) * 26;
-      tilt.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-    };
-
-    const onLeave = () => {
-      tilt.style.transform = "rotateX(0deg) rotateY(0deg)";
-    };
-
-    node.addEventListener("mousemove", onMove);
-    node.addEventListener("mouseleave", onLeave);
-    return () => {
-      node.removeEventListener("mousemove", onMove);
-      node.removeEventListener("mouseleave", onLeave);
-    };
   }, []);
 
   useEffect(() => {
@@ -166,12 +137,10 @@ export default function Hero() {
         </div>
 
         <div className="hero-visual" ref={visualRef}>
-          <div className="hero-tilt" ref={tiltRef}>
-            <div className="hero-ring">
-              <div className="hero-card-depth">
-                <div className="hero-logo-card">
-                  <img src="/assets/logo.jpeg" alt="Unruffled Feathers logo" />
-                </div>
+          <div className="hero-ring">
+            <div className="hero-card-depth">
+              <div className="hero-logo-card">
+                <img src="/assets/logo.jpeg" alt="Unruffled Feathers logo" />
               </div>
             </div>
           </div>

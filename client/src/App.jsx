@@ -11,13 +11,8 @@ import Assignments from "./components/Assignments.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
-import { useTiltButtons } from "./hooks/useTiltButtons.js";
-import { useTiltCards } from "./hooks/useTiltCards.js";
 
 export default function App() {
-  useTiltButtons();
-  useTiltCards();
-
   return (
     <>
       <Preloader />
