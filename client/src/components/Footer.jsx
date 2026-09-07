@@ -42,6 +42,10 @@ export default function Footer() {
           <span>© {year} Unruffled Feathers Enterprises Private Limited. All rights reserved.</span>
           <span>Founded 2019</span>
         </div>
+        <p className="footer-credit">
+          Placeholder photography via Wikimedia Commons contributors, used
+          under free licenses — swap for your own before launch.
+        </p>
       </div>
     </footer>
   );

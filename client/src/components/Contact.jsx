@@ -56,7 +56,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section section-alt">
+    <section id="contact" className="section">
       <div className="container">
         <Reveal className="section-head">
           <span className="eyebrow">Contact Us</span>
@@ -75,33 +75,24 @@ export default function Contact() {
             <p>We usually respond within one business day.</p>
 
             <div className="contact-detail">
-              <span className="ic">@</span>
-              <div>
-                <strong>Email</strong>
-                <a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
-              </div>
+              <span className="ic">Email</span>
+              <a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
             </div>
 
             <div className="contact-detail">
-              <span className="ic">💬</span>
-              <div>
-                <strong>WhatsApp</strong>
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Chat with us instantly
-                </a>
-              </div>
+              <span className="ic">WhatsApp</span>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chat with us instantly
+              </a>
             </div>
 
             <div className="contact-detail">
-              <span className="ic">🌐</span>
-              <div>
-                <strong>Website</strong>
-                <span>www.unruffledfeathers.com</span>
-              </div>
+              <span className="ic">Website</span>
+              <span>www.unruffledfeathers.com</span>
             </div>
           </Reveal>
 

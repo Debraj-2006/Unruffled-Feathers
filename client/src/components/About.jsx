@@ -14,16 +14,19 @@ export default function About() {
       <div className="container about-grid">
         <div className="about-visual">
           <Reveal variant="left" className="about-frame">
-            <div className="about-tilt">
-              <div className="about-logo-card">
-                <img src="/assets/logo.jpeg" alt="Unruffled Feathers" />
-              </div>
-            </div>
-            <div className="about-badge">
-              <strong>2019</strong>
-              <span>Est.</span>
-            </div>
+            <img
+              src="/assets/about-photo.jpg"
+              alt="Cast and crew on set of a film production"
+              className="about-photo"
+            />
+            <span className="about-frame-badge">
+              <img src="/assets/logo-mark.jpeg" alt="Unruffled Feathers" />
+            </span>
           </Reveal>
+          <div className="about-badge">
+            <strong>2019</strong>
+            <span>Est.</span>
+          </div>
         </div>
 
         <Reveal variant="right" delay={120} className="about-copy">

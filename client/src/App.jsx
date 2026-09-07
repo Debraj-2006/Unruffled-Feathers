@@ -8,6 +8,8 @@ import Opportunities from "./components/Opportunities.jsx";
 import Market from "./components/Market.jsx";
 import Team from "./components/Team.jsx";
 import Assignments from "./components/Assignments.jsx";
+import CtaBand from "./components/CtaBand.jsx";
+import FAQ from "./components/FAQ.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
@@ -25,6 +27,8 @@ export default function App() {
       <Market />
       <Team />
       <Assignments />
+      <CtaBand />
+      <FAQ />
       <Contact />
       <Footer />
       <WhatsAppButton />
