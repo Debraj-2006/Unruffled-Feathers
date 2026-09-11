@@ -14,12 +14,6 @@ const TEAM = [
     photo: "/assets/team-rahul.png",
     bio: "Rahul brings about 21+ years of industry experience in the Hospitality, Information Technology, entrepreneurship and Entertainment industry. He has produced a movie, done casting for a few advertisements and been part of several entertainment ventures. Currently an active part of the proprietary foods industry, Internet of Things and Entertainment industry, customer satisfaction and customer-focused solutioning is always on his mind. Currently he has business stakes in several companies like Aloe Plus, Indo Bio Organics, Riot Labz and now Unruffled Feathers.",
   },
-  {
-    name: "Dominic Pereira",
-    role: "Head of Operations / Human Resources",
-    photo: "/assets/team-dominic.png",
-    bio: "With 21+ years of deep cross-cultural exposure, Dominic has built a reputation for delivering strong outcomes on global projects in India, USA, Australia, South Africa and Kenya. Extensively engaged in contact center operations, customer service centers, change / re-engineering projects, talent development and cross-cultural communication, Learning & Development and Human Resources. Passionate about helping people evolve and grow, he strikes a balance between developing people while driving outstanding business performance. His varied expertise lies in designing learning content, facilitation and providing on-going coaching for targeted business needs. He excels within the fields of organizational behavior, defining training roadmaps, process mapping, L&D structures and re-defining customer experience and people management in the HR space. “Passion Drives Excellence” is his mantra.",
-  },
 ];
 
 function TeamRow({ member, index }) {
