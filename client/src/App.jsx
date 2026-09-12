@@ -1,37 +1,22 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Preloader from "./components/Preloader.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
-import Navbar from "./components/Navbar.jsx";
-import Hero from "./components/Hero.jsx";
-import About from "./components/About.jsx";
-import Services from "./components/Services.jsx";
-import Opportunities from "./components/Opportunities.jsx";
-import Market from "./components/Market.jsx";
-import Team from "./components/Team.jsx";
-import Assignments from "./components/Assignments.jsx";
-import CtaBand from "./components/CtaBand.jsx";
-import FAQ from "./components/FAQ.jsx";
-import Contact from "./components/Contact.jsx";
-import Footer from "./components/Footer.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
+import Landing from "./pages/Landing.jsx";
+import EducationPage from "./pages/EducationPage.jsx";
+import FilmPage from "./pages/FilmPage.jsx";
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
       <Preloader />
       <ScrollProgress />
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Opportunities />
-      <Market />
-      <Team />
-      <Assignments />
-      <CtaBand />
-      <FAQ />
-      <Contact />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/education" element={<EducationPage />} />
+        <Route path="/film" element={<FilmPage />} />
+      </Routes>
       <WhatsAppButton />
-    </>
+    </BrowserRouter>
   );
 }

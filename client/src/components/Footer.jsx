@@ -1,6 +1,16 @@
+import { Link } from "react-router-dom";
 import { SITE_EMAIL } from "../config.js";
 
-export default function Footer() {
+export default function Footer({
+  tagline = "A fully technology-enabled Internet of People platform for the entertainment, film, theater, tourism and aviation industry.",
+  exploreLinks = [
+    { href: "#about", label: "About Us" },
+    { href: "#services", label: "Business Model" },
+    { href: "#team", label: "Our Team" },
+    { href: "#assignments", label: "Recent Work" },
+  ],
+  homeTo = "/",
+}) {
   const year = new Date().getFullYear();
 
   return (
@@ -8,23 +18,21 @@ export default function Footer() {
       <div className="container">
         <div className="footer-top">
           <div>
-            <div className="footer-brand">
+            <Link to={homeTo} className="footer-brand">
               <img src="/assets/logo-mark.jpeg" alt="Unruffled Feathers" />
               <span>Unruffled Feathers</span>
-            </div>
-            <p>
-              A fully technology-enabled Internet of People platform for the
-              entertainment, film, theater, tourism and aviation industry.
-            </p>
+            </Link>
+            <p>{tagline}</p>
           </div>
 
           <div>
             <h4>Explore</h4>
             <ul>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#services">Business Model</a></li>
-              <li><a href="#team">Our Team</a></li>
-              <li><a href="#assignments">Recent Work</a></li>
+              {exploreLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
             </ul>
           </div>
 

@@ -1,20 +1,27 @@
 import Reveal from "./Reveal.jsx";
 
-export default function CtaBand() {
+export default function CtaBand({
+  bgImage = "/assets/cta-bg.jpg",
+  heading = (
+    <>
+      Have a project, brand or <em>platform</em> in mind?
+    </>
+  ),
+  ctaHref = "#contact",
+  ctaLabel = "Start a conversation",
+}) {
   return (
     <section className="cta-band">
       <div className="cta-band-bg" aria-hidden="true">
-        <img src="/assets/cta-bg.jpg" alt="" />
+        <img src={bgImage} alt="" />
       </div>
       <div className="container cta-band-inner">
         <Reveal variant="left">
-          <h2>
-            Have a project, brand or <em>platform</em> in mind?
-          </h2>
+          <h2>{heading}</h2>
         </Reveal>
         <Reveal variant="right" delay={120}>
-          <a href="#contact" className="btn btn-cta">
-            Start a conversation
+          <a href={ctaHref} className="btn btn-cta">
+            {ctaLabel}
           </a>
         </Reveal>
       </div>

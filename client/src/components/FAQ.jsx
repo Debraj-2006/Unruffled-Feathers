@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Reveal from "./Reveal.jsx";
 
-const FAQS = [
+const DEFAULT_FAQS = [
   {
     q: "What industries does Unruffled Feathers work with?",
     a: "We serve the entertainment, film, theater, tourism and aviation industries — connecting talent, brands and audiences through a single technology-enabled platform.",
@@ -24,7 +24,7 @@ const FAQS = [
   },
 ];
 
-export default function FAQ() {
+export default function FAQ({ faqs = DEFAULT_FAQS, lead = "A few things people usually ask before reaching out. Don't see yours — send us a message." }) {
   const [open, setOpen] = useState(0);
 
   return (
@@ -35,14 +35,11 @@ export default function FAQ() {
           <h2 className="section-title">
             Questions, <em>answered</em>
           </h2>
-          <p className="section-lead">
-            A few things people usually ask before reaching out. Don't see
-            yours — send us a message.
-          </p>
+          <p className="section-lead">{lead}</p>
         </Reveal>
 
         <div className="faq-list">
-          {FAQS.map((item, i) => (
+          {faqs.map((item, i) => (
             <Reveal
               key={item.q}
               delay={i * 70}

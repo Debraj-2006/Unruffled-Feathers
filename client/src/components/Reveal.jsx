@@ -8,12 +8,12 @@ export default function Reveal({
   className = "",
   ...rest
 }) {
-  const ref = useReveal();
+  const [ref, isVisible] = useReveal();
 
   return (
     <Tag
       ref={ref}
-      className={`reveal reveal-${variant} ${className}`.trim()}
+      className={`reveal reveal-${variant} ${isVisible ? "is-visible" : ""} ${className}`.trim()}
       style={{ transitionDelay: `${delay}ms` }}
       {...rest}
     >

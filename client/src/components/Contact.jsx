@@ -16,7 +16,14 @@ function validate(values) {
   return errors;
 }
 
-export default function Contact() {
+export default function Contact({
+  heading = (
+    <>
+      Let's start a <em>conversation</em>
+    </>
+  ),
+  lead = "Have a project, partnership or casting need in mind? Send us a message or reach out directly.",
+}) {
   const [values, setValues] = useState(EMPTY);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ state: "idle", message: "" });
@@ -60,13 +67,8 @@ export default function Contact() {
       <div className="container">
         <Reveal className="section-head">
           <span className="eyebrow">Contact Us</span>
-          <h2 className="section-title">
-            Let's start a <em>conversation</em>
-          </h2>
-          <p className="section-lead">
-            Have a project, partnership or casting need in mind? Send us a
-            message or reach out directly.
-          </p>
+          <h2 className="section-title">{heading}</h2>
+          <p className="section-lead">{lead}</p>
         </Reveal>
 
         <div className="contact-wrap">

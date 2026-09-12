@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#opportunities", label: "Opportunities" },
-  { href: "#team", label: "Team" },
-  { href: "#assignments", label: "Work" },
-  { href: "#contact", label: "Contact" },
-];
-
-export default function Navbar() {
+export default function Navbar({ links, switchLink, homeTo = "/" }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
@@ -22,7 +14,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = LINKS.map((l) => document.querySelector(l.href)).filter(Boolean);
+    const sections = links.map((l) => document.querySelector(l.href)).filter(Boolean);
     if (!sections.length) return;
 
     const observer = new IntersectionObserver(
@@ -37,18 +29,18 @@ export default function Navbar() {
 
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
-  }, []);
+  }, [links]);
 
   return (
     <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="container">
-        <a href="#top" className="brand">
+        <Link to={homeTo} className="brand">
           <img src="/assets/logo-mark.jpeg" alt="Unruffled Feathers" />
           <span className="brand-text">Unruffled Feathers</span>
-        </a>
+        </Link>
 
         <nav className={`nav-links ${open ? "open" : ""}`}>
-          {LINKS.map((link) => (
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -58,6 +50,11 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          {switchLink && (
+            <Link to={switchLink.to} onClick={() => setOpen(false)}>
+              {switchLink.label}
+            </Link>
+          )}
         </nav>
 
         <button
