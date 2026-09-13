@@ -4,7 +4,7 @@ export const WHATSAPP_NUMBER = "919341921581";
 export const WHATSAPP_DEFAULT_MESSAGE =
   "Hi Unruffled Feathers, I'd like to know more about your services.";
 
-export const SITE_EMAIL = "hello@unruffledfeathers.com";
+export const SITE_EMAIL = "support@unruffledfeathers.com";
 export const SITE_URL = "https://www.unruffledfeathers.com";
 
 // Base URL of the backend API. Leave blank for local dev (Vite proxies /api
