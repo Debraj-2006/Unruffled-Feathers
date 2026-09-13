@@ -19,17 +19,29 @@ export default function Hero({
   ],
 }) {
   const copyRef = useRef(null);
+  const bgImgRef = useRef(null);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+
     let ticking = false;
 
     const update = () => {
       const y = window.scrollY;
       const fade = Math.max(0, 1 - y / 500);
+      const tilt = Math.min(y * 0.02, 10);
+
       if (copyRef.current) {
-        copyRef.current.style.transform = `translateY(${y * 0.15}px)`;
+        copyRef.current.style.transform = `perspective(1200px) translateY(${y * 0.15}px) rotateX(${tilt * 0.35}deg)`;
         copyRef.current.style.opacity = fade;
       }
+
+      if (bgImgRef.current) {
+        const scale = 1 + Math.min(y * 0.00025, 0.12);
+        bgImgRef.current.style.transform = `scale(${scale}) translateY(${y * 0.08}px) rotateX(${tilt}deg)`;
+      }
+
       ticking = false;
     };
 
@@ -40,6 +52,7 @@ export default function Hero({
       }
     };
 
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -47,7 +60,7 @@ export default function Hero({
   return (
     <section id="top" className="hero">
       <div className="hero-bg" aria-hidden="true">
-        <img src={bgImage} alt="" />
+        <img ref={bgImgRef} src={bgImage} alt="" />
       </div>
 
       <div className="container">
