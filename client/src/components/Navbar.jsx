@@ -31,49 +31,60 @@ export default function Navbar({ links, switchLink, cta, homeTo = "/" }) {
     return () => observer.disconnect();
   }, [links]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
-    <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      <div className="container">
-        <Link to={homeTo} className="brand">
-          <img src="/assets/logo-mark.jpeg" alt="Unruffled Feathers" />
-          <span className="brand-text">Unruffled Feathers</span>
-        </Link>
+    <>
+      <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
+        <div className="container">
+          <Link to={homeTo} className="brand">
+            <img src="/assets/logo-mark.jpeg" alt="Unruffled Feathers" />
+            <span className="brand-text">Unruffled Feathers</span>
+          </Link>
 
-        <div className="nav-right">
-          <nav className={`nav-links ${open ? "open" : ""}`}>
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={active === link.href ? "active" : ""}
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-            {switchLink && (
-              <Link to={switchLink.to} onClick={() => setOpen(false)}>
-                {switchLink.label}
-              </Link>
-            )}
-            {cta && (
-              <a href={cta.href} className="btn btn-primary nav-cta" onClick={() => setOpen(false)}>
-                {cta.label}
-              </a>
-            )}
-          </nav>
+          <div className="nav-right">
+            <nav className={`nav-links ${open ? "open" : ""}`}>
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={active === link.href ? "active" : ""}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+              {switchLink && (
+                <Link to={switchLink.to} onClick={() => setOpen(false)}>
+                  {switchLink.label}
+                </Link>
+              )}
+              {cta && (
+                <a href={cta.href} className="btn btn-primary nav-cta" onClick={() => setOpen(false)}>
+                  {cta.label}
+                </a>
+              )}
+            </nav>
 
-          <button
-            className="nav-toggle"
-            aria-label="Toggle navigation"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+            <button
+              className={`nav-toggle ${open ? "open" : ""}`}
+              aria-label="Toggle navigation"
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+      <div className={`nav-backdrop ${open ? "open" : ""}`} onClick={() => setOpen(false)} />
+    </>
   );
 }

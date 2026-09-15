@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Preloader from "./components/Preloader.jsx";
-import ScrollProgress from "./components/ScrollProgress.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
 import Landing from "./pages/Landing.jsx";
 import EducationPage from "./pages/EducationPage.jsx";
@@ -10,7 +9,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Preloader />
-      <ScrollProgress />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/education" element={<EducationPage />} />
