@@ -45,7 +45,11 @@ const FAQS = [
 export default function EducationPage() {
   return (
     <>
-      <Navbar links={NAV_LINKS} switchLink={{ to: "/film", label: "Film & Entertainment" }} />
+      <Navbar
+        links={NAV_LINKS}
+        switchLink={{ to: "/film", label: "Film & Entertainment" }}
+        cta={{ href: "#contact", label: "Join Us Now" }}
+      />
       <Hero
         bgImage="/assets/services-photo.jpg"
         kicker="Welcome to"

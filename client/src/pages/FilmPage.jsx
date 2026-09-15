@@ -23,7 +23,11 @@ const NAV_LINKS = [
 export default function FilmPage() {
   return (
     <>
-      <Navbar links={NAV_LINKS} switchLink={{ to: "/education", label: "Teach Data India" }} />
+      <Navbar
+        links={NAV_LINKS}
+        switchLink={{ to: "/education", label: "Teach Data India" }}
+        cta={{ href: "#contact", label: "Get in Touch" }}
+      />
       <Hero />
       <About />
       <Services />

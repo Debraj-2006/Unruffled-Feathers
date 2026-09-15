@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar({ links, switchLink, homeTo = "/" }) {
+export default function Navbar({ links, switchLink, cta, homeTo = "/" }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
@@ -39,33 +39,40 @@ export default function Navbar({ links, switchLink, homeTo = "/" }) {
           <span className="brand-text">Unruffled Feathers</span>
         </Link>
 
-        <nav className={`nav-links ${open ? "open" : ""}`}>
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={active === link.href ? "active" : ""}
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-          {switchLink && (
-            <Link to={switchLink.to} onClick={() => setOpen(false)}>
-              {switchLink.label}
-            </Link>
-          )}
-        </nav>
+        <div className="nav-right">
+          <nav className={`nav-links ${open ? "open" : ""}`}>
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={active === link.href ? "active" : ""}
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+            {switchLink && (
+              <Link to={switchLink.to} onClick={() => setOpen(false)}>
+                {switchLink.label}
+              </Link>
+            )}
+            {cta && (
+              <a href={cta.href} className="btn btn-primary nav-cta" onClick={() => setOpen(false)}>
+                {cta.label}
+              </a>
+            )}
+          </nav>
 
-        <button
-          className="nav-toggle"
-          aria-label="Toggle navigation"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+          <button
+            className="nav-toggle"
+            aria-label="Toggle navigation"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
     </header>
   );
