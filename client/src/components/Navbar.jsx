@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar({ links, switchLink, cta, homeTo = "/" }) {
+export default function Navbar({ links, switchLink, switchLinks, cta, homeTo = "/" }) {
+  const switches = switchLinks || (switchLink ? [switchLink] : []);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [ventureOpen, setVentureOpen] = useState(false);
   const [active, setActive] = useState("");
 
   useEffect(() => {
@@ -32,11 +34,24 @@ export default function Navbar({ links, switchLink, cta, homeTo = "/" }) {
   }, [links]);
 
   useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (e) => e.key === "Escape" && setOpen(false);
+    if (!open && !ventureOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      setVentureOpen(false);
+    };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+  }, [open, ventureOpen]);
+
+  useEffect(() => {
+    if (!ventureOpen) return;
+    const onClick = (e) => {
+      if (!e.target.closest(".nav-venture")) setVentureOpen(false);
+    };
+    window.addEventListener("click", onClick);
+    return () => window.removeEventListener("click", onClick);
+  }, [ventureOpen]);
 
   return (
     <>
@@ -59,10 +74,32 @@ export default function Navbar({ links, switchLink, cta, homeTo = "/" }) {
                   {link.label}
                 </a>
               ))}
-              {switchLink && (
-                <Link to={switchLink.to} onClick={() => setOpen(false)}>
-                  {switchLink.label}
-                </Link>
+              {switches.length > 0 && (
+                <div className={`nav-venture ${ventureOpen ? "open" : ""}`}>
+                  <button
+                    type="button"
+                    className="nav-venture-toggle"
+                    aria-expanded={ventureOpen}
+                    onClick={() => setVentureOpen((v) => !v)}
+                  >
+                    Other Ventures
+                    <span className="nav-venture-caret" aria-hidden="true" />
+                  </button>
+                  <div className="nav-venture-menu">
+                    {switches.map((link) => (
+                      <Link
+                        key={link.to}
+                        to={link.to}
+                        onClick={() => {
+                          setOpen(false);
+                          setVentureOpen(false);
+                        }}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               )}
               {cta && (
                 <a href={cta.href} className="btn btn-primary nav-cta" onClick={() => setOpen(false)}>

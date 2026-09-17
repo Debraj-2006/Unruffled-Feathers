@@ -3,6 +3,7 @@ import Preloader from "./components/Preloader.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
 import Landing from "./pages/Landing.jsx";
 import EducationPage from "./pages/EducationPage.jsx";
+import ConsultingPage from "./pages/ConsultingPage.jsx";
 import FilmPage from "./pages/FilmPage.jsx";
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/education" element={<EducationPage />} />
+        <Route path="/consulting" element={<ConsultingPage />} />
         <Route path="/film" element={<FilmPage />} />
       </Routes>
       <WhatsAppButton />

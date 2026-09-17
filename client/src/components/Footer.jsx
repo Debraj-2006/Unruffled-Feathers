@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { SITE_EMAIL } from "../config.js";
+import { SITE_ADDRESS, SITE_CIN, SITE_EMAIL, SITE_GSTIN, SITE_PHONES } from "../config.js";
 
 export default function Footer({
   tagline = "A fully technology-enabled Internet of People platform for the entertainment, film, theater, tourism and aviation industry.",
@@ -40,15 +40,27 @@ export default function Footer({
             <h4>Contact</h4>
             <ul>
               <li><a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a></li>
+              {SITE_PHONES.map((phone) => (
+                <li key={phone}>
+                  <a href={`tel:${phone.replace(/\s+/g, "")}`}>{phone}</a>
+                </li>
+              ))}
               <li><a href="#contact">Send a message</a></li>
               <li>www.unruffledfeathers.com</li>
             </ul>
+          </div>
+
+          <div>
+            <h4>Registered Office</h4>
+            <p>{SITE_ADDRESS}</p>
           </div>
         </div>
 
         <div className="footer-bottom">
           <span>© {year} Unruffled Feathers Enterprises Private Limited. All rights reserved.</span>
-          <span>Founded 2019</span>
+          <span>
+            CIN {SITE_CIN} · GSTIN {SITE_GSTIN}
+          </span>
         </div>
       </div>
     </footer>

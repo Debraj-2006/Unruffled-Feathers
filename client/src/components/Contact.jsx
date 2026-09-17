@@ -1,6 +1,14 @@
 import { useState } from "react";
 import Reveal from "./Reveal.jsx";
-import { API_URL, SITE_EMAIL, WHATSAPP_NUMBER } from "../config.js";
+import {
+  API_URL,
+  SITE_ADDRESS,
+  SITE_CIN,
+  SITE_EMAIL,
+  SITE_GSTIN,
+  SITE_PHONES,
+  WHATSAPP_NUMBER,
+} from "../config.js";
 
 const EMPTY = { name: "", email: "", phone: "", subject: "", message: "" };
 
@@ -93,9 +101,30 @@ export default function Contact({
             </div>
 
             <div className="contact-detail">
+              <span className="ic">Phone</span>
+              <span>
+                {SITE_PHONES.map((phone, i) => (
+                  <span key={phone}>
+                    <a href={`tel:${phone.replace(/\s+/g, "")}`}>{phone}</a>
+                    {i < SITE_PHONES.length - 1 ? " · " : ""}
+                  </span>
+                ))}
+              </span>
+            </div>
+
+            <div className="contact-detail">
               <span className="ic">Website</span>
               <span>www.unruffledfeathers.com</span>
             </div>
+
+            <div className="contact-detail">
+              <span className="ic">Registered office</span>
+              <span>{SITE_ADDRESS}</span>
+            </div>
+
+            <p className="contact-legal">
+              CIN {SITE_CIN} · GSTIN {SITE_GSTIN}
+            </p>
           </Reveal>
 
           <Reveal

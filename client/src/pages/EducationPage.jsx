@@ -47,7 +47,10 @@ export default function EducationPage() {
     <>
       <Navbar
         links={NAV_LINKS}
-        switchLink={{ to: "/film", label: "Film & Entertainment" }}
+        switchLinks={[
+          { to: "/consulting", label: "Consulting" },
+          { to: "/film", label: "Film & Entertainment" },
+        ]}
         cta={{ href: "#contact", label: "Join Us Now" }}
       />
       <Hero

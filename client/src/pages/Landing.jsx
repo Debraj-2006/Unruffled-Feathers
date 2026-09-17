@@ -12,16 +12,26 @@ function IconGraduate() {
   );
 }
 
-function IconFilm() {
+function IconConsulting() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M3 8h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8z" strokeLinejoin="round" />
-      <path d="M3 8l1.6-4h3L6 8M9.4 8L11 4h3l-1.6 4M15.8 8L17.4 4h3L19 8" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="3" y="7" width="18" height="13" rx="2" strokeLinejoin="round" />
+      <path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M3 12h18M11 12v2.4h2V12" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
 const VENTURES = [
+  {
+    to: "/consulting",
+    key: "consulting",
+    label: "Consulting",
+    eyebrow: "AI, Data & Digital",
+    desc: "Our core service — calm, considered AI, data, software and agentic-AI consulting, plus specialist practices for hotels, coffee, foods, aviation and automobiles.",
+    icon: IconConsulting,
+    bg: "/assets/services-photo.jpg",
+  },
   {
     to: "/education",
     key: "education",
@@ -31,21 +41,13 @@ const VENTURES = [
     icon: IconGraduate,
     bg: "/assets/chooser-education.jpg",
   },
-  {
-    to: "/film",
-    key: "film",
-    label: "Film & Entertainment",
-    eyebrow: "Since 2019",
-    desc: "An Internet of People platform for casting, staffing and consulting across entertainment, tourism and aviation.",
-    icon: IconFilm,
-    bg: "/assets/chooser-film.jpg",
-  },
 ];
 
 export default function Landing() {
   const [active, setActive] = useState(0);
   const venture = VENTURES[active];
   const Icon = venture.icon;
+  const count = VENTURES.length;
 
   return (
     <div className="chooser">
@@ -63,18 +65,23 @@ export default function Landing() {
 
         <Reveal>
           <h1 className="chooser-title">
-            Two ventures, <em>one platform</em>
+            Two core services, <em>one house</em>
           </h1>
           <p className="chooser-lead">Choose where you'd like to go.</p>
         </Reveal>
 
         <Reveal delay={100}>
-          <div className="toggle" role="tablist" aria-label="Choose a venture">
+          <div
+            className="toggle"
+            role="tablist"
+            aria-label="Choose a venture"
+            style={{ gridTemplateColumns: `repeat(${count}, 1fr)` }}
+          >
             <span
               className="toggle-thumb"
               style={{
-                left: `calc(4px + ${active} * (50% - 4px))`,
-                width: "calc(50% - 4px)",
+                left: `calc(4px + ${active} * (100% - 8px) / ${count})`,
+                width: `calc((100% - 8px) / ${count})`,
               }}
             />
             {VENTURES.map((v, i) => (
@@ -102,6 +109,14 @@ export default function Landing() {
           <Link to={venture.to} className="btn btn-primary">
             Enter {venture.label}
           </Link>
+        </Reveal>
+
+        <Reveal delay={200} className="chooser-footnote">
+          <p>
+            Also behind Unruffled Feathers:{" "}
+            <Link to="/film">Film &amp; Entertainment</Link> — our casting,
+            production and strategic-staffing business.
+          </p>
         </Reveal>
       </div>
     </div>

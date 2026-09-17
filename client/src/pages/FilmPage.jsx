@@ -25,7 +25,10 @@ export default function FilmPage() {
     <>
       <Navbar
         links={NAV_LINKS}
-        switchLink={{ to: "/education", label: "Teach Data India" }}
+        switchLinks={[
+          { to: "/consulting", label: "Consulting" },
+          { to: "/education", label: "Teach Data India" },
+        ]}
         cta={{ href: "#contact", label: "Get in Touch" }}
       />
       <Hero />
