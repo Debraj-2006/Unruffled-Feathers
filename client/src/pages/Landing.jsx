@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal.jsx";
 
@@ -44,20 +43,9 @@ const VENTURES = [
 ];
 
 export default function Landing() {
-  const [active, setActive] = useState(0);
-  const venture = VENTURES[active];
-  const Icon = venture.icon;
-  const count = VENTURES.length;
-
   return (
     <div className="chooser">
-      <div className="chooser-bg" aria-hidden="true">
-        {VENTURES.map((v, i) => (
-          <img key={v.key} src={v.bg} alt="" className={i === active ? "is-active" : ""} />
-        ))}
-      </div>
-
-      <div className="chooser-inner">
+      <div className="chooser-inner chooser-inner-wide">
         <Link to="/" className="brand chooser-brand">
           <img src="/assets/logo-mark.jpeg" alt="Unruffled Feathers" />
           <span className="brand-text">Unruffled Feathers</span>
@@ -70,46 +58,27 @@ export default function Landing() {
           <p className="chooser-lead">Choose where you'd like to go.</p>
         </Reveal>
 
-        <Reveal delay={100}>
-          <div
-            className="toggle"
-            role="tablist"
-            aria-label="Choose a venture"
-            style={{ gridTemplateColumns: `repeat(${count}, 1fr)` }}
-          >
-            <span
-              className="toggle-thumb"
-              style={{
-                left: `calc(4px + ${active} * (100% - 8px) / ${count})`,
-                width: `calc((100% - 8px) / ${count})`,
-              }}
-            />
-            {VENTURES.map((v, i) => (
-              <button
-                key={v.key}
-                type="button"
-                role="tab"
-                aria-selected={active === i}
-                className={`toggle-option ${active === i ? "active" : ""}`}
-                onClick={() => setActive(i)}
-              >
-                {v.label}
-              </button>
-            ))}
-          </div>
-        </Reveal>
-
-        <Reveal key={venture.key} className="chooser-panel">
-          <span className="chooser-icon">
-            <Icon />
-          </span>
-          <span className="eyebrow">{venture.eyebrow}</span>
-          <h2>{venture.label}</h2>
-          <p>{venture.desc}</p>
-          <Link to={venture.to} className="btn btn-primary">
-            Enter {venture.label}
-          </Link>
-        </Reveal>
+        <div className="chooser-grid">
+          {VENTURES.map((v, i) => {
+            const Icon = v.icon;
+            return (
+              <Reveal key={v.key} delay={i * 100} variant="zoom" className="chooser-card">
+                <div className="chooser-card-photo">
+                  <img src={v.bg} alt="" />
+                </div>
+                <span className="chooser-icon">
+                  <Icon />
+                </span>
+                <span className="eyebrow">{v.eyebrow}</span>
+                <h2>{v.label}</h2>
+                <p>{v.desc}</p>
+                <Link to={v.to} className="btn btn-primary">
+                  Enter {v.label}
+                </Link>
+              </Reveal>
+            );
+          })}
+        </div>
 
         <Reveal delay={200} className="chooser-footnote">
           <p>
