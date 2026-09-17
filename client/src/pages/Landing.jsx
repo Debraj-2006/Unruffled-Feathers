@@ -30,7 +30,7 @@ const VENTURES = [
     eyebrow: "AI, Data & Digital",
     desc: "Our core service — calm, considered AI, data, software and agentic-AI consulting, plus specialist practices for hotels, coffee, foods, aviation and automobiles.",
     icon: IconConsulting,
-    bg: "/assets/services-photo.jpg",
+    bg: "/assets/program-ml-data-engineering.jpg",
   },
   {
     to: "/education",
