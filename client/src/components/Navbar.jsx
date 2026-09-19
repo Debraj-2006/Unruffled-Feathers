@@ -73,7 +73,7 @@ export default function Navbar({ links, switchLink, switchLinks, cta, homeTo = "
                   }}
                 >
                   <option value="" disabled>
-                    Other Ventures
+                    Ventures
                   </option>
                   {switches.map((link) => (
                     <option key={link.to} value={link.to}>

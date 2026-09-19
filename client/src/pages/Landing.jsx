@@ -21,6 +21,16 @@ function IconConsulting() {
   );
 }
 
+function IconFilm() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+      <path d="M4 8l2.2-4h3l-2.2 4M10.5 8l2.2-4h3l-2.2 4M17 8l2.2-4h1.8a1 1 0 0 1 1 1v3" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="3" y="8" width="18" height="13" rx="2" strokeLinejoin="round" />
+      <path d="M3 13h18" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 const VENTURES = [
   {
     to: "/consulting",
@@ -51,7 +61,7 @@ export default function Landing() {
           <span className="brand-text">Unruffled Feathers</span>
         </Link>
 
-        <Reveal>
+        <Reveal className="chooser-heading">
           <h1 className="chooser-title">
             Two core services, <em>one house</em>
           </h1>
@@ -81,11 +91,17 @@ export default function Landing() {
         </div>
 
         <Reveal delay={200} className="chooser-footnote">
-          <p>
-            Also behind Unruffled Feathers:{" "}
-            <Link to="/film">Film &amp; Entertainment</Link> — our casting,
-            production and strategic-staffing business.
-          </p>
+          <span className="chooser-footnote-label">Also behind Unruffled Feathers</span>
+          <Link to="/film" className="chooser-footnote-badge">
+            <span className="chooser-footnote-icon">
+              <IconFilm />
+            </span>
+            <span className="chooser-footnote-copy">
+              <strong>Film &amp; Entertainment</strong>
+              <span>Casting, production and strategic-staffing</span>
+            </span>
+            <span className="chooser-footnote-arrow" aria-hidden="true">→</span>
+          </Link>
         </Reveal>
       </div>
     </div>
