@@ -54,7 +54,7 @@ export default function EducationPage() {
         cta={{ href: "#contact", label: "Join Us Now" }}
       />
       <Hero
-        bgImage="/assets/services-photo.jpg"
+        bgImage="/assets/chooser-education.jpg"
         kicker="Welcome to"
         title={
           <>

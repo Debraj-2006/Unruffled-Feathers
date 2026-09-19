@@ -31,7 +31,7 @@ export default function FilmPage() {
         ]}
         cta={{ href: "#contact", label: "Get in Touch" }}
       />
-      <Hero />
+      <Hero bgImage="/assets/chooser-film.jpg" />
       <About />
       <Services />
       <Opportunities />

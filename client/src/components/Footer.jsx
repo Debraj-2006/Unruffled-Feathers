@@ -10,6 +10,7 @@ export default function Footer({
     { href: "#assignments", label: "Recent Work" },
   ],
   homeTo = "/",
+  photoCredits,
 }) {
   const year = new Date().getFullYear();
 
@@ -62,6 +63,8 @@ export default function Footer({
             CIN {SITE_CIN} · GSTIN {SITE_GSTIN}
           </span>
         </div>
+
+        {photoCredits && <p className="footer-credit">{photoCredits}</p>}
       </div>
     </footer>
   );

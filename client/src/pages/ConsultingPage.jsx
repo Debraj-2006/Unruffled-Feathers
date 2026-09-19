@@ -58,7 +58,7 @@ export default function ConsultingPage() {
         cta={{ href: "#contact", label: "Start a Conversation" }}
       />
       <Hero
-        bgImage="/assets/services-photo.jpg"
+        bgImage="/assets/program-ml-data-engineering.jpg"
         kicker="Welcome to"
         title={
           <>
@@ -105,6 +105,7 @@ export default function ConsultingPage() {
       <Footer
         tagline="AI, data, software and agentic-AI consulting — plus specialist practices for hotels, coffee, premium foods, aviation and automobiles — by Unruffled Feathers."
         exploreLinks={FOOTER_LINKS}
+        photoCredits="Industry photography via Wikimedia Commons: hotel lobby by Basile Morin (CC BY-SA 4.0); coffee by Shixart1985 (CC BY 2.0); spices by sara marlowe (CC BY 2.0); aviation by Calvin Teo (CC BY-SA 3.0); car interior by Acabashi (CC BY-SA 4.0)."
       />
     </>
   );

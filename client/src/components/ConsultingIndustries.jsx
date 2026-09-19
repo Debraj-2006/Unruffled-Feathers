@@ -4,6 +4,7 @@ const INDUSTRIES = [
   {
     title: "Hotel Business Consulting",
     tag: "Hospitality",
+    image: "/assets/industry-hotel.jpg",
     items: [
       "Revenue management & dynamic pricing",
       "Guest experience design",
@@ -15,6 +16,7 @@ const INDUSTRIES = [
   {
     title: "Coffee Consulting",
     tag: "Food & Beverage",
+    image: "/assets/industry-coffee.jpg",
     items: [
       "Sourcing & bean-quality evaluation",
       "Café concept & menu engineering",
@@ -26,6 +28,7 @@ const INDUSTRIES = [
   {
     title: "Indian Premium Foods Consulting",
     tag: "Food & Beverage",
+    image: "/assets/industry-food.jpg",
     items: [
       "Product development for premium/organic lines",
       "Speciality-ingredient sourcing & supply chain",
@@ -37,6 +40,7 @@ const INDUSTRIES = [
   {
     title: "Aviation Consulting",
     tag: "Aviation",
+    image: "/assets/industry-aviation.jpg",
     items: [
       "Ground handling & passenger-experience design",
       "Staffing, training & SOPs",
@@ -47,6 +51,7 @@ const INDUSTRIES = [
   {
     title: "Automobiles Software Consulting",
     tag: "Mobility",
+    image: "/assets/industry-automobiles.jpg",
     items: [
       "Dealer management system (DMS) selection & implementation",
       "CRM & lead management for auto retail",
@@ -76,6 +81,11 @@ export default function ConsultingIndustries() {
         <div className="opportunity-grid">
           {INDUSTRIES.map((ind, i) => (
             <Reveal key={ind.title} delay={i * 100} variant="zoom" className="opportunity-card">
+              {ind.image && (
+                <div className="opportunity-card-photo">
+                  <img src={ind.image} alt="" />
+                </div>
+              )}
               <span className="tag">{ind.tag}</span>
               <h3>{ind.title}</h3>
               <ul>
